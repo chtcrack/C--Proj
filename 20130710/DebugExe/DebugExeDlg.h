@@ -10,7 +10,8 @@ class CDebugExeDlg : public CDialog
 // 构造
 public:
 	CDebugExeDlg(CWnd* pParent = NULL);	// 标准构造函数
-
+	
+CString m_strPath;
 // 对话框数据
 	enum { IDD = IDD_DEBUGEXE_DIALOG };
 
@@ -27,4 +28,7 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnBnClickedOk();
+	afx_msg void OnBnClickedButton1();
 };

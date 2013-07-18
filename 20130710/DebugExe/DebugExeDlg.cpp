@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "DebugExe.h"
 #include "DebugExeDlg.h"
+#include ".\debugexedlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -29,6 +30,8 @@ BEGIN_MESSAGE_MAP(CDebugExeDlg, CDialog)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	//}}AFX_MSG_MAP
+	ON_BN_CLICKED(IDOK, OnBnClickedOk)
+	ON_BN_CLICKED(IDC_BUTTON1, OnBnClickedButton1)
 END_MESSAGE_MAP()
 
 
@@ -81,4 +84,38 @@ void CDebugExeDlg::OnPaint()
 HCURSOR CDebugExeDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
+}
+
+void CDebugExeDlg::OnBnClickedOk()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	OnOK();
+}
+
+void CDebugExeDlg::OnBnClickedButton1()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	// TODO: Add your control notification handler code here UpdateData(TRUE); char szDir[MAX_PATH]; BROWSEINFO bi; ITEMIDLIST *pidl; 
+	 UpdateData(TRUE);
+BROWSEINFO bi;
+char szDir[200];
+ITEMIDLIST *pidl;
+	bi.hwndOwner = this->m_hWnd; // 指定父窗口，在对话框显示期间，父窗口将被禁用   
+	bi.pidlRoot = NULL; // 如果指定NULL，就以“桌面”为根    
+	bi.pszDisplayName = szDir; 
+	bi.lpszTitle = "请选择目录"; // 这一行将显示在对话框的顶端   
+	bi.ulFlags = BIF_STATUSTEXT | BIF_USENEWUI | BIF_RETURNONLYFSDIRS;
+	bi.lpfn = NULL; bi.lParam = 0; bi.iImage = 0; 
+	pidl = SHBrowseForFolder(&bi);
+	if(pidl == NULL) return; 
+	if(!SHGetPathFromIDList(pidl, szDir))
+	{
+		return;
+	}
+	else 
+	{
+		m_strPath = szDir;
+		SetDlgItemText(IDC_EDIT1,(LPCTSTR)m_strPath);
+	}
+		UpdateData(FALSE); 
 }
