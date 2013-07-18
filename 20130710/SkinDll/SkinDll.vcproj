@@ -145,9 +145,6 @@
 				RelativePath=".\Ini.cpp">
 			</File>
 			<File
-				RelativePath=".\Ini.h">
-			</File>
-			<File
 				RelativePath=".\Login.cpp">
 			</File>
 			<File
@@ -196,6 +193,9 @@
 			</File>
 			<File
 				RelativePath=".\Hook.h">
+			</File>
+			<File
+				RelativePath=".\Ini.h">
 			</File>
 			<File
 				RelativePath=".\Login.h">

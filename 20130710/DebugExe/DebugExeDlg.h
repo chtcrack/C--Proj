@@ -2,8 +2,8 @@
 //
 
 #pragma once
-
-
+#include "../SkinDll/Ini.h"
+void CheckAccount();
 // CDebugExeDlg 对话框
 class CDebugExeDlg : public CDialog
 {
@@ -11,7 +11,7 @@ class CDebugExeDlg : public CDialog
 public:
 	CDebugExeDlg(CWnd* pParent = NULL);	// 标准构造函数
 	
-CString m_strPath;
+CString m_strPath;//选择目录后的文件路径
 // 对话框数据
 	enum { IDD = IDD_DEBUGEXE_DIALOG };
 

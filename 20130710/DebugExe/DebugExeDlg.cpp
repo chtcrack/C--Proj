@@ -86,10 +86,16 @@ HCURSOR CDebugExeDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-void CDebugExeDlg::OnBnClickedOk()
+void CDebugExeDlg::OnBnClickedOk()//创建一个工作线程
 {
 	// TODO: 在此添加控件通知处理程序代码
-	OnOK();
+	::CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)CheckAccount,NULL,NULL,NULL);
+}
+
+void CheckAccount()
+{
+CIni ini("Account.ini");
+
 }
 
 void CDebugExeDlg::OnBnClickedButton1()
